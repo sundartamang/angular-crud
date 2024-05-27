@@ -1,0 +1,64 @@
+<div class="mx-5"> 
+    <app-breadcrumb *ngIf="product" [product]="product"></app-breadcrumb>   
+
+    <div class="p-3">
+        <form [formGroup]="productFormGroup">
+            <div class="row">
+                <div class="col-lg-6 col-md-6 form-group">
+                    <label for="productName">Name</label>
+                    <input type="text" formControlName="name" class="form-control" id="productName"
+                        placeholder="Enter product name">
+                    <small class="text-danger invalid_msg"
+                        *ngIf="productFormGroup?.controls?.['name']?.invalid && productFormGroup?.controls?.['name']?.touched">
+                        <span *ngIf="productFormGroup?.controls?.['name']?.errors?.['required']">
+                            name is required! <br>
+                        </span>
+                        <span *ngIf="productFormGroup?.controls?.['name']?.errors?.['minlength']">
+                            name must be at least 3 characters! ! <br>
+                        </span>
+                        <span *ngIf="productFormGroup?.controls?.['name']?.errors?.['maxlength']">
+                            name must be less than 30 characters! <br>
+                        </span>
+                    </small>
+                </div>
+                <div class="col-lg- 6 col-md-6 form-group">
+                    <label for="price">Price</label>
+                    <input type="number" formControlName="price" class="form-control" id="price" placeholder="Enter product price">
+                    <small class="text-danger invalid_msg"
+                        *ngIf="productFormGroup?.controls?.['price']?.invalid && productFormGroup?.controls?.['price']?.touched">
+                        <span *ngIf="productFormGroup?.controls?.['price']?.errors?.['required']">
+                            price is required! <br>
+                        </span>
+                        <span *ngIf="productFormGroup?.controls?.['price']?.errors?.['pattern']">
+                            price must be a number! <br>
+                        </span>
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea class="form-control" formControlName="description" id="productDescription" rows="3"></textarea>
+                    <small class="text-danger invalid_msg"
+                        *ngIf="productFormGroup?.controls?.['description']?.invalid && productFormGroup?.controls?.['description']?.touched">
+                        <span *ngIf="productFormGroup?.controls?.['description']?.errors?.['required']">
+                            description is required! <br>
+                        </span>
+                        <span *ngIf="productFormGroup?.controls?.['description']?.errors?.['minlength']">
+                            description must be at least 3 characters! ! <br>
+                        </span>
+                    </small>
+                </div>
+            </div>
+            <div class="mt-3">
+                <div class="form-group">
+                    <button type="button" class="btn btn-sm btn-secondary mr-3" (click)="redirectToProductList()">Cancel</button>
+                    <button type="button" class="btn btn-sm btn-primary" [disabled]="!productFormGroup.valid"
+                        (click)="updateProduct()">
+                        update
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

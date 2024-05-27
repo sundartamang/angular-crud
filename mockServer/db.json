@@ -1,0 +1,22 @@
+{
+  "products": [
+    {
+      "name": "mouse",
+      "price": 3000,
+      "description": "wireless mouse",
+      "id": "8-21WBc"
+    },
+    {
+      "name": "keyboard",
+      "price": 1000,
+      "description": "wireless keyboard",
+      "id": "i2YdXf6"
+    },
+    {
+      "name": "usb",
+      "price": 30,
+      "description": "usb",
+      "id": "oak4FN7"
+    }
+  ]
+}

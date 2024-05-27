@@ -1,0 +1,11 @@
+<div class="my-3">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/">Products</a></li>
+            <ng-container *ngIf="showProductName" >
+                <li class="breadcrumb-item"><a routerLink="/" (click)="redirectToProductDetail()">{{product.name}}</a></li>
+            </ng-container>
+            <li class="breadcrumb-item active" aria-current="page"> {{showProductName ? 'Edit': 'Detail'}}</li>
+        </ol>
+    </nav>
+</div>
