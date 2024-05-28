@@ -1,7 +1,7 @@
 {
   "products": [
     {
-      "name": "mouse",
+      "name": "mouse (updated)",
       "price": 3000,
       "description": "wireless mouse",
       "id": "8-21WBc"
@@ -13,10 +13,16 @@
       "id": "i2YdXf6"
     },
     {
-      "name": "usb",
+      "name": "cooler",
       "price": 30,
-      "description": "usb",
-      "id": "oak4FN7"
+      "description": "laptop cooler",
+      "id": "8tmzxU2"
+    },
+    {
+      "name": "test product",
+      "price": 300,
+      "description": "test product description here",
+      "id": "_pCh6hX"
     }
   ]
 }

@@ -14,8 +14,10 @@ export class ProductListComponent implements OnInit {
 
   productFormGroup: FormGroup;
   products: Product[] = [];
-  searchTerm: string;
   selectedProduct: Product;
+
+  @ViewChild('closeCreateProductConfirmModal') closeCreateProductConfirmModal: ElementRef;
+  @ViewChild('closeDeleteProductConfirmModal') closeDeleteProductConfirmModal: ElementRef;
 
   private ngUnsubscribe: Subject<void> = new Subject<void>();
 
@@ -30,8 +32,7 @@ export class ProductListComponent implements OnInit {
     this.searchService.searchTerms$.
       pipe(takeUntil(this.ngUnsubscribe)).
       subscribe(term => {
-        this.searchTerm = term;
-        this.filterProducts();
+        this.filterProducts(term);
       });
 
     this.getProducts();
@@ -48,6 +49,7 @@ export class ProductListComponent implements OnInit {
       if (response) {
         this.productFormGroup.reset();
         this.getProducts();
+        this.closeCreateProductConfirmModal.nativeElement.click();
       }
     })
   }
@@ -68,12 +70,13 @@ export class ProductListComponent implements OnInit {
     this.productService.deleteProduct(this.selectedProduct.id).subscribe((response) => {
       if (response) {
         this.getProducts();
+        this.closeDeleteProductConfirmModal.nativeElement.click();
       }
     })
   }
 
-  private filterProducts() {
-    this.productService.searchProducts(this.searchTerm).subscribe((results: Product[]) => {
+  private filterProducts(searchTerm: string) {
+    this.productService.searchProducts(searchTerm).subscribe((results: Product[]) => {
       if(results){
         this.products = results
       }

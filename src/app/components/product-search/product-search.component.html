@@ -1,8 +1,6 @@
-<nav class="navbar navbar-expand-lg my-1">
-    <div class="collapse navbar-collapse mx-auto" id="navbarSupportedContent">
-        <form class="form-inline mx-auto my-2 my-lg-0" (submit)="search(searchTerm.value)">
-            <input #searchTerm class="form-control mr-sm-2" type="search" placeholder="Enter product name" aria-label="Search">
-            <button class="btn btn-primary my-2 my-sm-0" type="submit">Search</button>
-        </form>
-    </div>
-</nav>
+<form (submit)="search(searchTerm)">
+  <div class="form-group">
+    <input #inputElement [(ngModel)]="searchTerm" class="form-control w-20" name="searchTerm"  type="text" placeholder="Enter product name" (input)="search(searchTerm)">
+    <i *ngIf="searchTerm" class="fa fa-times-circle text-secondary" aria-hidden="true" (click)="clearInput(inputElement)"></i>
+  </div>
+</form>

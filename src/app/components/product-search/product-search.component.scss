@@ -1,0 +1,11 @@
+.form-group{
+    position: relative;
+    width: 300px;
+
+    i{
+        position: absolute !important;
+        right: 20px;
+        top: 10px;
+        cursor: pointer;
+    }
+}

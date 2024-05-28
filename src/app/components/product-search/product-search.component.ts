@@ -9,6 +9,7 @@ import { SearchService } from 'src/app/service';
 })
 export class ProductSearchComponent implements OnInit {
 
+  searchTerm: string = '';
   private searchTerms = new Subject<string>();
 
   constructor(
@@ -19,13 +20,18 @@ export class ProductSearchComponent implements OnInit {
     this.searchTerms.
       pipe(debounceTime(300), distinctUntilChanged()).
       subscribe(term => {
-        console.log("term is ", term)
         this.searchService.emitSearchTerm(term);
       });
   }
 
   search(term: string) {
     this.searchTerms.next(term);
+  }
+
+  clearInput(input: HTMLInputElement){
+    this.searchTerm = '';
+    input.value = '';
+    this.searchService.emitSearchTerm('');
   }
 
 }
